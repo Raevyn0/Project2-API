@@ -1,7 +1,7 @@
-package com.revature.pokedeck.user;
+package com.revature.pokedeck.users;
 
 import com.revature.pokedeck.common.util.exceptions.ResourceNotFoundException;
-import com.revature.pokedeck.user.dtos.UserResponse;
+import com.revature.pokedeck.users.dtos.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public UserResponse fetchUserById(Integer userid) {
-        return userRepo.findById(userid)
+        return userRepo.findById(String.valueOf(userid))
                 .map(UserResponse::new)
                 .orElseThrow(ResourceNotFoundException::new);
     }

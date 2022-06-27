@@ -1,6 +1,6 @@
-package com.revature.pokedeck.user.dtos;
+package com.revature.pokedeck.users.dtos;
 
-import com.revature.pokedeck.user.User;
+import com.revature.pokedeck.users.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,15 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponse {
 
-    private Integer userid;
+    private String userId;
     private String email;
     private String username;
-    private Integer roleid;
+    private String role;
 
     public UserResponse(User user) {
-        this.userid = user.getId();
+        this.userId = user.getUserId();
         this.email = user.getEmail();
         this.username = user.getUsername();
-        this.roleid = user.getRoleid();
+        this.role = user.getRole().toString();
     }
 }

@@ -1,4 +1,4 @@
 package com.revature.pokedeck.card;
 
-public class CardRepository {
+public interface CardRepository {
 }

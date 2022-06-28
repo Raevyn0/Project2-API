@@ -22,4 +22,4 @@ management:
         include: "*" # do not enable all Actuator endpoints when deploying to prod (customer-facing)
 
 jwt:
-  secret: david
+  secret: revature

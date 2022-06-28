@@ -28,12 +28,10 @@ create table cards (
 
 
 create table UserDeckCards (
+	deckid int generated always as identity primary key,
     userid int,
     cardid varchar,
     quantity int default '1',
-    
-    constraint user_deck_cards_pk
-    primary key (userid, cardid),
 
 	constraint users_fk
 	foreign key (userid)
@@ -45,12 +43,9 @@ create table UserDeckCards (
 );
 
 create table UserFavoriteCards (
+	favoritesid int generated always as identity primary key,
     userid int,
     cardid varchar,
-   
-    
-    constraint user_favorite_cards_pk
-    primary key (userid, cardid),
 
 	constraint cardf_fk
 	foreign key (cardid)

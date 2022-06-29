@@ -1,13 +1,17 @@
-create schema pokedecks;
-
 set search_path to pokedecks;
 
-
 create table roles (
-   roleid int primary key,
-   role varchar not null
+	roleid int primary key,
+	name varchar
 );
 
+insert into roles (roleid, name) values
+(1, 'admin'), (2, 'basic');
+
+create table cards (
+    cardid varchar primary key,
+    cardurl varchar not null
+);
 
 create table users (
     userid int generated always as identity primary key,
@@ -21,31 +25,11 @@ create table users (
 	references roles(roleid)
 );
 
-create table cards (
-    cardid varchar primary key,
-    cardurl varchar not null
-);
-
-
-create table UserDeckCards (
-	deckid int generated always as identity primary key,
-    userid int,
-    cardid varchar,
-    quantity int default '1',
-
-	constraint users_fk
-	foreign key (userid)
-	references users (userid),
-	
-	constraint cards_fk
-	foreign key (cardid)
-	references cards (cardid)
-);
-
 create table UserFavoriteCards (
-	favoritesid int generated always as identity primary key,
-    userid int,
+	userid int,
     cardid varchar,
+    
+    primary key (userid, cardid),
 
 	constraint cardf_fk
 	foreign key (cardid)
@@ -54,4 +38,29 @@ create table UserFavoriteCards (
 	constraint usersf_fk
 	foreign key (userid)
 	references users (userid)
+);
+
+create table Deck (
+	id int generated always as identity primary key,
+    name varchar,
+    owner_id int,
+
+	constraint usersf_fk
+	foreign key (owner_id)
+	references users (userid)
+);
+
+create table DeckCards (
+	deckid int,
+    cardid varchar,
+    
+    primary key (deckid, cardid),
+
+	constraint cardf_fk
+	foreign key (cardid)
+	references cards (cardid),
+	
+	constraint deckf_fk
+	foreign key (deckid)
+	references Deck (id)
 );

@@ -13,14 +13,14 @@ public class Card  implements Comparable <Card> {
 
     @Id
     @Column(name = "cardid", nullable = false)
-    private String Cardid;
+    private String cardid;
 
     @Column(name = "cardurl", nullable = false)
-    private String Cardurl;
+    private String cardurl;
 
     public Card(String cardid, String cardurl) {
-        Cardid = cardid;
-        Cardurl = cardurl;
+        cardid = cardid;
+        cardurl = cardurl;
     }
 
     public Card() {
@@ -33,27 +33,27 @@ public class Card  implements Comparable <Card> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return Objects.equals(Cardid, card.Cardid) && Objects.equals(Cardurl, card.Cardurl);
+        return Objects.equals(cardid, card.cardid) && Objects.equals(cardurl, card.cardurl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Cardid, Cardurl);
+        return Objects.hash(cardid, cardurl);
     }
 
     public String getCardid() {
-        return Cardid;
+        return cardid;
     }
 
     public void setCardid(String cardid) {
     }
 
     public String getCardurl() {
-        return Cardurl;
+        return cardurl;
     }
 
     public void setCardurl(String cardurl) {
-        Cardurl = cardurl;
+        cardurl = cardurl;
     }
 
     @Override

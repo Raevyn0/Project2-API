@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-<<<<<<< HEAD
+
 import java.util.Objects;
 
 @Entity
@@ -38,7 +38,7 @@ public class Card  implements Comparable <Card>{
     @Override
     public int hashCode() {
         return Objects.hash(Cardid, Cardurl);
-=======
+
 
 @Entity
 @Table(name = "cards")
@@ -73,13 +73,13 @@ public class Card  implements Comparable <Card>{
 
     public void setCardurl(String cardurl) {
         this.cardurl = cardurl;
->>>>>>> c21d27c85154d093230cdf164ee62fa733f3d677
+
     }
 
     @Override
     public String toString() {
         return "Card{" +
-<<<<<<< HEAD
+
                 "Cardid='" + Cardid + '\'' +
                 ", Cardurl='" + Cardurl + '\'' +
                 '}';

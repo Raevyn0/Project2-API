@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+<<<<<<< HEAD
 import java.util.Objects;
 
 @Entity
@@ -37,11 +38,48 @@ public class Card  implements Comparable <Card>{
     @Override
     public int hashCode() {
         return Objects.hash(Cardid, Cardurl);
+=======
+
+@Entity
+@Table(name = "cards")
+public class Card  implements Comparable <Card>{
+
+    @Id
+    @Column
+    private String cardid;
+
+    @Column
+    private String cardurl;
+
+    public Card(String cardid, String cardurl) {
+        this.cardid = cardid;
+        this.cardurl = cardurl;
+    }
+
+    public Card() {
+    }
+
+    public String getCardid() {
+        return cardid;
+    }
+
+    public void setCardid(String cardid) {
+        this.cardid = cardid;
+    }
+
+    public String getCardurl() {
+        return cardurl;
+    }
+
+    public void setCardurl(String cardurl) {
+        this.cardurl = cardurl;
+>>>>>>> c21d27c85154d093230cdf164ee62fa733f3d677
     }
 
     @Override
     public String toString() {
         return "Card{" +
+<<<<<<< HEAD
                 "Cardid='" + Cardid + '\'' +
                 ", Cardurl='" + Cardurl + '\'' +
                 '}';
@@ -63,6 +101,13 @@ public class Card  implements Comparable <Card>{
         Cardurl = cardurl;
     }
 
+=======
+                "cardid='" + cardid + '\'' +
+                ", cardurl='" + cardurl + '\'' +
+                '}';
+    }
+
+>>>>>>> c21d27c85154d093230cdf164ee62fa733f3d677
     @Override
     public int compareTo(Card o) {
         return 0;

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FavResponse {
 
-    private Integer userid;
+    private String userid;
 
     private String cardid;
 

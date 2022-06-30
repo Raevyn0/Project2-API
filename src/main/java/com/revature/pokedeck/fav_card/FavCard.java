@@ -3,6 +3,7 @@ package com.revature.pokedeck.fav_card;
 import com.revature.pokedeck.user.User;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -22,7 +23,7 @@ public class FavCard implements Comparable<FavCard>{
     @Column(name="cardid", nullable = false)
     private String cardid;
 
-    public FavCard(Integer userid, String cardid) {
+    public FavCard(String userid, String cardid) {
         this.userid = userid;
         this.cardid = cardid;
     }
@@ -30,11 +31,11 @@ public class FavCard implements Comparable<FavCard>{
     public FavCard() {
     }
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

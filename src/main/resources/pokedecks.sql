@@ -1,3 +1,5 @@
+create schema pokedecks;
+
 set search_path to pokedecks;
 
 create table roles (
@@ -28,14 +30,13 @@ create table users (
 create table UserFavoriteCards (
 	userid int,
     cardid varchar,
-    
     primary key (userid, cardid),
 
 	constraint cardf_fk
 	foreign key (cardid)
 	references cards (cardid),
-	
-	constraint usersf_fk
+  
+  constraint usersf_fk
 	foreign key (userid)
 	references users (userid)
 );
@@ -56,11 +57,14 @@ create table DeckCards (
     
     primary key (deckid, cardid),
 
+    primary key (deckid, cardid),
+
 	constraint cardf_fk
 	foreign key (cardid)
 	references cards (cardid),
-	
+
 	constraint deckf_fk
 	foreign key (deckid)
 	references Deck (id)
 );
+

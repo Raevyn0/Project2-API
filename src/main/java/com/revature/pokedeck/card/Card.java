@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "card")
+@Table(name = "cards")
 public class Card  implements Comparable <Card> {
 
     @Id

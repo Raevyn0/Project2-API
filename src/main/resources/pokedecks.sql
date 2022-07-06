@@ -54,15 +54,14 @@ create table Deck (
 create table DeckCards (
 	deckid int,
     cardid varchar,
+    quantity int,
     
-    primary key (deckid, cardid),
-
     primary key (deckid, cardid),
 
 	constraint cardf_fk
 	foreign key (cardid)
 	references cards (cardid),
-
+	
 	constraint deckf_fk
 	foreign key (deckid)
 	references Deck (id)

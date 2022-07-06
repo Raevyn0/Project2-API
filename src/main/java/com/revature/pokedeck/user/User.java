@@ -1,6 +1,7 @@
 package com.revature.pokedeck.user;
 
 import com.revature.pokedeck.card.Card;
+import com.revature.pokedeck.deck.DeckCard;
 
 import javax.persistence.*;
 import java.util.List;

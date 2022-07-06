@@ -1,9 +1,9 @@
 package com.revature.pokedeck.card;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.revature.pokedeck.deck.DeckCard;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "cards")
@@ -15,6 +15,9 @@ public class Card  implements Comparable <Card>{
 
     @Column
     private String cardurl;
+
+    @OneToMany(mappedBy = "card")
+    Set<DeckCard> cards;
 
     public Card(String cardid, String cardurl) {
         this.cardid = cardid;

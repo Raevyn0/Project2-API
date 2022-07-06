@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CardResponse {
 
-    private String Cardid;
+    private String cardid;
 
-    private String Cardurl;
+    private String cardurl;
 
     public CardResponse(Card card) {
-        this.Cardid = card.getCardid();
-        this.Cardurl = card.getCardurl();
+        this.cardid = card.getCardid();
+        this.cardurl = card.getCardurl();
     }
 }

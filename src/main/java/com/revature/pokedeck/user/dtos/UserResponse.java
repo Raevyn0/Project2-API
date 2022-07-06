@@ -15,6 +15,8 @@ public class UserResponse {
     private Integer userId;
     private String email;
     private String username;
+
+    private String password;
     private Integer role;
 
     private List<String> favoriteCardsId;
@@ -23,6 +25,7 @@ public class UserResponse {
         this.userId = user.getUserId();
         this.email = user.getEmail();
         this.username = user.getUsername();
+        this.password = user.getPassword();
         this.role = user.getRoleId();
         this.favoriteCardsId = user.getFavoriteCards().stream().map(Card::getCardid).collect(Collectors.toList());
     }

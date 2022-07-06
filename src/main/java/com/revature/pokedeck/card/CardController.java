@@ -25,5 +25,4 @@ public class CardController {
         return cardservice.fetchAllCards();
     }
 
-
 }

@@ -5,26 +5,43 @@ import com.revature.pokedeck.deck.DeckCard;
 import javax.persistence.*;
 import java.util.Set;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "cards")
-public class Card  implements Comparable <Card>{
+public class Card  implements Comparable <Card> {
 
     @Id
-    @Column
+    @Column(name = "cardid", nullable = false)
     private String cardid;
 
-    @Column
+    @Column(name = "cardurl", nullable = false)
     private String cardurl;
 
     @OneToMany(mappedBy = "card")
     Set<DeckCard> cards;
 
     public Card(String cardid, String cardurl) {
-        this.cardid = cardid;
-        this.cardurl = cardurl;
+        cardid = cardid;
+        cardurl = cardurl;
     }
 
     public Card() {
+
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return Objects.equals(cardid, card.cardid) && Objects.equals(cardurl, card.cardurl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cardid, cardurl);
     }
 
     public String getCardid() {
@@ -32,7 +49,6 @@ public class Card  implements Comparable <Card>{
     }
 
     public void setCardid(String cardid) {
-        this.cardid = cardid;
     }
 
     public String getCardurl() {
@@ -40,19 +56,12 @@ public class Card  implements Comparable <Card>{
     }
 
     public void setCardurl(String cardurl) {
-        this.cardurl = cardurl;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "cardid='" + cardid + '\'' +
-                ", cardurl='" + cardurl + '\'' +
-                '}';
+        cardurl = cardurl;
     }
 
     @Override
     public int compareTo(Card o) {
         return 0;
     }
+
 }

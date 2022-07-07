@@ -1,12 +1,20 @@
 package com.revature.pokedeck.user;
 
+import com.revature.pokedeck.common.datasource.EntitySearcher;
+import com.revature.pokedeck.common.dtos.ResourceCreationResponse;
+import com.revature.pokedeck.user.dtos.NewUserRequest;
 import com.revature.pokedeck.util.exceptions.ResourceNotFoundException;
 import com.revature.pokedeck.user.dtos.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
+import javax.swing.text.html.parser.Entity;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,10 +22,13 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepo;
+    private final EntitySearcher entitySearcher;
 
     @Autowired
-    public UserService(UserRepository userRepo) {
+    public UserService(UserRepository userRepo, EntitySearcher entitySearcher) {
         this.userRepo = userRepo;
+        this.entitySearcher = entitySearcher;
+
     }
 
     public List<UserResponse> fetchAllUsers() {
@@ -27,10 +38,30 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserResponse fetchUserById(Integer userid) {
-        return userRepo.findById(userid)
+
+
+
+    public List<UserResponse> search(Map<String, String> requestParamMap) {
+        if (requestParamMap.isEmpty()) return fetchAllUsers();
+        Set<User> matchingUsers = entitySearcher.searchForEntity(requestParamMap, User.class);
+        if (matchingUsers.isEmpty()) throw new ResourceNotFoundException();
+        return matchingUsers.stream()
                 .map(UserResponse::new)
-                .orElseThrow(ResourceNotFoundException::new);
+                .collect(Collectors.toList());
+    }
+
+
+    public ResourceCreationResponse createUser(@Valid NewUserRequest newUserReq){
+        User newUser = newUserReq.extractResource();
+
+        if(userRepo.existsByUsername(newUser.getUsername())){
+            //throw new Exception("This username is taken");
+        }
+
+        newUser.setRoleId(2);
+        userRepo.save(newUser);
+
+        return new ResourceCreationResponse(newUser.getUserId());
     }
 
 }

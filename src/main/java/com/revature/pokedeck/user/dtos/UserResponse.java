@@ -1,6 +1,7 @@
 package com.revature.pokedeck.user.dtos;
 
 import com.revature.pokedeck.card.Card;
+import com.revature.pokedeck.deck.DeckCard;
 import com.revature.pokedeck.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;

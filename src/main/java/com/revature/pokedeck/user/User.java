@@ -5,6 +5,7 @@ import com.revature.pokedeck.deck.DeckCard;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -12,6 +13,7 @@ public class User implements Comparable<User>{
 
     @Id
     @Column(name = "userid", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -33,6 +35,7 @@ public class User implements Comparable<User>{
             inverseJoinColumns = @JoinColumn(name = "cardid"))
     private List<Card> favoriteCards;
 
+
     public User(Integer userId, String email, String username, String password, Integer roleId, List<Card> favoriteCards) {
         this.userId = userId;
         this.email = email;
@@ -40,6 +43,19 @@ public class User implements Comparable<User>{
         this.password = password;
         this.roleId = roleId;
         this.favoriteCards = favoriteCards;
+    }
+
+    public User(String email, String username, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String email, String username, String password, Integer roleId) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.roleId = roleId;
     }
 
     public User() {

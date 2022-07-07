@@ -1,12 +1,14 @@
 package com.revature.pokedeck.user;
 
+import com.revature.pokedeck.common.dtos.ResourceCreationResponse;
+import com.revature.pokedeck.user.dtos.NewUserRequest;
 import com.revature.pokedeck.user.dtos.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -23,5 +25,16 @@ public class UserController {
     @GetMapping(produces = "application/json")
     public List<UserResponse> getAllUsers() {
         return userService.fetchAllUsers();
+    }
+
+    @GetMapping("/search")
+    public List<UserResponse> findBy(@RequestParam Map<String, String> params) {
+        return userService.search(params);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    public ResourceCreationResponse postNewUser(@RequestBody NewUserRequest newUserInfo) {
+        return userService.createUser(newUserInfo);
     }
 }

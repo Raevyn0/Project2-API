@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - echo "IN PRE-BUILD PHASE"
-      - aws s3 cp s3://pokedeck-resources/application-deploy.yml .src/main/resources
+      - aws s3 cp s3://pokedeck-resources/application-deploy.yml ./src/main/resources
   build:
     commands:
       - echo "IN BUILD PHASE"

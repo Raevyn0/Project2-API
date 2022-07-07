@@ -57,10 +57,6 @@ public class UserService {
         if(userRepo.existsByUsername(newUser.getUsername())){
             //throw new Exception("This username is taken");
         }
-        
-        int randomInt = ThreadLocalRandom.current().nextInt(0, 1000000);
-
-        newUser.setUserId(randomInt);
 
         newUser.setRoleId(2);
         userRepo.save(newUser);

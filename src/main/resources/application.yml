@@ -4,22 +4,7 @@ server:
     context-path: /pokedecks
 
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=pokedecks
-    username: postgres
-    password: david
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-    show-sql: false
-    hibernate:
-      ddl-auto: validate
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*" # do not enable all Actuator endpoints when deploying to prod (customer-facing)
-
-jwt:
-  secret: david
+  application:
+    name: pokedecks
+  profiles:
+    default: local

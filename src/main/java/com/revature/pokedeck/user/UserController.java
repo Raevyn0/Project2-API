@@ -6,6 +6,10 @@ import com.revature.pokedeck.user.dtos.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
@@ -26,6 +30,7 @@ public class UserController {
     public List<UserResponse> getAllUsers() {
         return userService.fetchAllUsers();
     }
+
 
     @GetMapping("/search")
     public List<UserResponse> findBy(@RequestParam Map<String, String> params) {

@@ -18,4 +18,4 @@ phases:
 
 artifacts:
   files:
-    - pokedeckAPI.jar
+    - PokedeckAPI.jar

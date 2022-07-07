@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 public class AuthRequest {
 
-    @Length(min = 3, max = 16)
+    @Length(min = 3, max = 15)
     private String username;
 
     private String password;

@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+      -echo "IN PRE-BUILD PHASE"
+  build:
+    commands:
+      - echo "IN BUILD PHASE"
+      - mvn clean package -Dspring.profiles.active=test
+  post_build:
+    commands:
+      - echo "IN POST_BUILD PHASE"
+      - mv target/*.jar ./PokedeckAPI.jar
+
+artifacts:
+  files:
+    - pokedeckAPI.jar

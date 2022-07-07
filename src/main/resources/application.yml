@@ -7,4 +7,4 @@ spring:
   application:
     name: pokedecks
   profiles:
-    default: local
+    default: deploy

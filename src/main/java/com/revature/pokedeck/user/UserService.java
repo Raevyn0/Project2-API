@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,6 +58,10 @@ public class UserService {
         if(userRepo.existsByUsername(newUser.getUsername())){
             //throw new Exception("This username is taken");
         }
+
+        int randomInt = ThreadLocalRandom.current().nextInt(0, 1000000);
+
+        newUser.setUserId(randomInt);
 
         newUser.setRoleId(2);
         userRepo.save(newUser);

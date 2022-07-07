@@ -6,7 +6,7 @@ phases:
       java: corretto8
   pre_build:
     commands:
-      -echo "IN PRE-BUILD PHASE"
+      - echo "IN PRE-BUILD PHASE"
   build:
     commands:
       - echo "IN BUILD PHASE"

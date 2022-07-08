@@ -13,7 +13,7 @@ public class User implements Comparable<User>{
 
     @Id
     @Column(name = "userid", nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column(name = "email", nullable = false, unique = true)

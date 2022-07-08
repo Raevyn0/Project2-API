@@ -12,7 +12,7 @@ import java.util.Set;
 public class User implements Comparable<User>{
 
     @Id
-    @Column(name = "userid", nullable = false, unique = true)
+    @Column(name = "userid", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 

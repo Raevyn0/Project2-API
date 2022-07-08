@@ -59,9 +59,9 @@ public class UserService {
             //throw new Exception("This username is taken");
         }
 
-        int randomInt = ThreadLocalRandom.current().nextInt(0, 1000000);
+/*        int randomInt = ThreadLocalRandom.current().nextInt(0, 1000000);
 
-        newUser.setUserId(randomInt);
+        newUser.setUserId(randomInt);*/
 
         newUser.setRoleId(2);
         userRepo.save(newUser);
